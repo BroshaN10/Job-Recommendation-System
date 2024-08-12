@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Recommended Jobs</h1>
+<div class="row">
+    {% for job in jobs %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ job.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ job.company }}</h6>
+                <p class="card-text">{{ job.location }}</p>
+                <p class="card-text">{{ job.description|truncatewords:30 }}</p>
+                <p class="card-text"><small class="text-muted">Posted on: {{ job.posted_date }}</small></p>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No recommendations found. Try updating your preferences.</p>
+    {% endfor %}
+</div>
+{% endblock %}
